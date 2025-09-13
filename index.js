@@ -1,16 +1,19 @@
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
 
-// Circles
-const circles = [
+// Initial circles
+const initialCircles = [
   { x: 50, y: 50, radius: 40, color: "red", clicked: false },
   { x: 50, y: 150, radius: 40, color: "green", clicked: false },
   { x: 50, y: 250, radius: 40, color: "blue", clicked: false },
   { x: 50, y: 350, radius: 40, color: "orange", clicked: false },
 ];
 
-// One arrow per circle
-const arrows = circles.map((circle, i) => ({
+// Copy of circles (we will modify this)
+let circles = initialCircles.map((c) => ({ ...c }));
+
+// Initial arrows
+const initialArrows = circles.map((circle) => ({
   x: 600,
   y: circle.y,
   length: 100,
@@ -21,6 +24,8 @@ const arrows = circles.map((circle, i) => ({
   targetX: 0,
   targetY: 0,
 }));
+
+let arrows = initialArrows.map((a) => ({ ...a }));
 
 function drawCircles() {
   circles.forEach((circle) => {
@@ -123,3 +128,14 @@ canvas.addEventListener("click", function (event) {
 
 // Initial draw
 draw();
+
+document.getElementById("resetBtn").addEventListener("click", () => {
+  // Reset circles and arrows to initial state
+  circles = initialCircles.map((c) => ({ ...c }));
+  arrows = initialArrows.map((a) => ({
+    ...a,
+    targetCircle: circles[initialArrows.indexOf(a)],
+  }));
+
+  draw();
+});
