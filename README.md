@@ -8,5 +8,6 @@ A reset button restores everything to the initial state.
 ## 📹 Demo
 
 Watch the demo video here:  
-https://github.com/user-attachments/assets/588ae348-f399-4b96-a9aa-08af4300d08d
+
+https://github.com/user-attachments/assets/1451ecc1-241d-4661-82b2-a5da1037a0ac
 
